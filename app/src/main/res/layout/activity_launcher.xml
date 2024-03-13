@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="32dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        app:cardBackgroundColor="@android:color/background_dark"
+        app:cardCornerRadius="32dp">
+      >
+
+
+        <TextView
+            android:id="@+id/initialText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/recipes_search"
+            android:textSize="36sp"
+            android:background="@android:color/holo_green_dark"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="300dp"
+        android:id="@+id/Boton1"
+        android:layout_height="100dp"
+        android:src="?android:attr/fingerprintAuthDrawable"
+        app:maxImageSize="68dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="150dp"
+        tools:ignore="ContentDescription"
+        />
+
+
+
+
+
+</RelativeLayout>

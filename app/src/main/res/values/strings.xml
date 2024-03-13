@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecipesApp</string>
+    <string name="recipes_search">Buscador de Recetas</string>
+    <string name="recipe_search">Buscador de Recetas</string>
+    <string name="recipe_name">Nombre receta</string>
+
+</resources>
