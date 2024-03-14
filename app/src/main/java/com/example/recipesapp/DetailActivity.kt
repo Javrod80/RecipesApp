@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
-import com.example.recipesapp.databinding.ActivityRecipesBinding
+import com.example.recipesapp.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,62 +15,42 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RecipesActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRecipesBinding
+    lateinit var binding: ActivityDetailBinding
 
-    private lateinit var recipes : Recipes
+
+    private lateinit var recipes: Recipes
+
 
     private var recipeId: Int? = null
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRecipesBinding.inflate(layoutInflater)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        recipeId = intent.getIntExtra("RECIPES_ID", -1)
 
-
-        recipeId = intent.getIntExtra("RECIPES_ID",-1)
-
-
+        loadData()
         detailRecipes(recipeId!!)
-        inilistener()
+        passData()
 
-
-
-
-
-    }
-
-    private fun inilistener() {
-        binding.button.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
-            startActivity(intent)
-
-        }
 
     }
 
     private fun loadData() {
-        Picasso.get().load(recipes.image).into(binding.imageRec)
-       // binding.ingredients.text = recipes.ingredients.toString()
-        binding.cuisine.text = recipes.cuisine
-        binding.cookTime.text = recipes.cookTime.toString()
-        binding.prepTime.text = recipes.prepTimes.toString()
-        binding.difficulty.text = recipes.difficulty
-        binding.mealType.text = recipes.mealType.toString()
-        //binding.instruccion.text = recipes.instructions.toString()
-        binding.recipeName.text = recipes.name
+        Picasso.get().load(recipes.image).into(binding.imageRec2)
+        binding.ingredients.text = recipes.ingredients.toString()
+        binding.instruccion.text = recipes.instructions.toString()
+        binding.recipeName2.text = recipes.name
 
 
     }
 
-    // LLamada a detalles de  las recetas by Id
-    private fun detailRecipes(id : Int) {
+
+    private fun detailRecipes(id: Int) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://dummyjson.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -84,20 +64,29 @@ class RecipesActivity : AppCompatActivity() {
             runOnUiThread {
                 if (response.body() != null) {
                     Log.i("HTTP", "respuesta correcta")
-                    recipes= response.body()!!
+                    recipes = response.body()!!
                     loadData()
-                }else {
-                    Log.i("HTTP","respuesta incorrecta" )
+                } else {
+                    Log.i("HTTP", "respuesta incorrecta")
                 }
 
             }
 
 
-
-
-
-
         }
+
+
+    }
+
+
+    private fun passData() {
+
+
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("RECIPES_ID", recipes.id)
+
+
+        startActivity(intent)
 
 
     }
@@ -112,11 +101,6 @@ class RecipesActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-
-
-
 
 
 }

@@ -39,8 +39,8 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="300dp"
         android:id="@+id/Boton1"
-        android:layout_height="100dp"
-        android:src="?android:attr/fingerprintAuthDrawable"
+        android:layout_height="200dp"
+        android:src="@drawable/start_arrow"
         app:maxImageSize="68dp"
         android:layout_marginTop="400dp"
         android:layout_marginStart="150dp"

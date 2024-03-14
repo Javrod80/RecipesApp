@@ -17,6 +17,10 @@ interface RecipesServiceApi {
     suspend fun allRecipes () : Response<RecipesResponse>
 
 
+    @GET ("recipes/search")
+    suspend fun searchByName (@Query("q") query: String) : Response <RecipesResponse>
+
+
 
 
 }

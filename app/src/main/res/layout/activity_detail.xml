@@ -5,11 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipesActivity">
-
+    tools:context=".DetailActivity">
 
     <ImageView
-        android:id="@+id/imageRec"
+        android:id="@+id/imageRec2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:scaleType="centerCrop"
@@ -17,8 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -32,17 +29,13 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/recipeName"
+                android:id="@+id/recipeName2"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center_horizontal"
@@ -52,74 +45,29 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/cuisine"
+                android:id="@+id/ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textStyle="italic"
-                android:textColor="@android:color/holo_blue_dark"
-                android:gravity="center_horizontal"
-                android:hint="@string/type_cuisine"/>
-            <TextView
-                android:id="@+id/mealType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="normal"
                 android:textColor="@android:color/holo_orange_dark"
                 android:gravity="center_horizontal"
-                android:hint="@string/meal_type"/>
-
-            <TextView
-                android:id="@+id/difficulty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textStyle="normal"
-                android:textColor="@color/black"
-                android:gravity="center_horizontal"
-                android:hint="@string/difficulty"/>
-            <TextView
-                android:id="@+id/cookTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="normal"
-                android:textColor="@android:color/holo_orange_dark"
-                android:gravity="center_horizontal"
-                android:hint="@string/cook_time"
+                android:hint="@string/ingredients"
                 />
             <TextView
-                android:id="@+id/prepTime"
+                android:id="@+id/instruccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textStyle="normal"
                 android:textColor="@android:color/holo_orange_dark"
                 android:gravity="center_horizontal"
-                android:hint="@string/prep_time"
-                />
+                android:hint="@string/instruccion"/>
 
 
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="150dp"
-            android:text="Ver Receta"
-            android:backgroundTint="@android:color/holo_blue_dark"
-
-            />
 
         </LinearLayout>
 
-
-
     </androidx.cardview.widget.CardView>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
