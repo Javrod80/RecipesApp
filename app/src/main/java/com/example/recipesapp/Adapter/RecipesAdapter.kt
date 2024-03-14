@@ -45,7 +45,7 @@ class RecipesAdapter (private var items: List<Recipes> = listOf(), val onClickLi
         fun render (recipes: Recipes){
 
             binding.textViewRecipe.text = recipes.name
-            Picasso.get().load(recipes.image.url).into(binding.recipeImageView)
+            Picasso.get().load(recipes.image).into(binding.recipeImageView)
         }
 
     }

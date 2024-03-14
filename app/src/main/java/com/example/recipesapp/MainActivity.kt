@@ -1,5 +1,6 @@
 package com.example.recipesapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.recipesapp.Adapter.RecipesAdapter
 import com.example.recipesapp.Data.Recipes
+import com.example.recipesapp.Data.RecipesResponse
 import com.example.recipesapp.Data.RecipesServiceApi
 import com.example.recipesapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding : ActivityMainBinding
     private lateinit var adapter: RecipesAdapter
     private var recipesList : List <Recipes> = listOf()
+
+
 
 
 
@@ -53,6 +57,16 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private fun onItemClickListener(position: Int) {
         val recipes : Recipes = recipesList[position]
 
+        val intent = Intent(this, RecipesActivity::class.java)
+        intent.putExtra("RECIPES_ID", recipes.id)
+
+
+
+
+        startActivity(intent)
+
+
+
     }
 
     private fun seeRecipes(query: String) {
@@ -65,7 +79,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val call: RecipesServiceApi = retrofit.create(RecipesServiceApi::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = call.allRecipes(query)
+
+            Log.i("HTTP", "Antes de la llamada")
+            val response = call.allRecipes()
+            Log.i("HTTP", "Despues de la llamada")
+            Log.i("HTTP", response.body().toString())
 
             runOnUiThread {
                 if (response.body() != null) {

@@ -1,6 +1,6 @@
 package com.example.recipesapp.Data
 
-import android.adservices.common.AdTechIdentifier
+import org.intellij.lang.annotations.Identifier
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,17 +10,16 @@ interface RecipesServiceApi {
 
 
 
-    @GET("recipes/search")
-    suspend fun searchRecipes (@Query("Key") query : String) : Response<RecipesResponse>
+    @GET("recipes/{id}")
+    suspend fun recipesId (@Path("id") identifier: Int) : Response<Recipes>
 
-    @GET("{recipes}")
-    suspend fun allRecipes (@Path("recipes") query: String) : Response<RecipesResponse>
-
-
-
-
+    @GET("recipes")
+    suspend fun allRecipes () : Response<RecipesResponse>
 
 
 
 
 }
+
+
+//@Query("q") query: String)

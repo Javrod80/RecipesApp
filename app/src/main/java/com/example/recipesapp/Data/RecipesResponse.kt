@@ -6,6 +6,7 @@ class RecipesResponse(
 
     @SerializedName("recipes") val recipes: List<Recipes>,
 
+
 ) {
 
 }
@@ -18,9 +19,12 @@ class Recipes(
     @SerializedName("cookTimeMinutes") val cookTime: Int,
     @SerializedName("difficulty") val difficulty: String,
     @SerializedName("cuisine") val cuisine: String,
-    @SerializedName("mealType") val mealType: String,
-    @SerializedName("image") val image: Image
+    @SerializedName("mealType") val mealType: List<String>,
+    @SerializedName("image") val image: String
+
 )
+
+
 
 
 class Image(
