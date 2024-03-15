@@ -10,5 +10,6 @@
     <string name="prep_time">Prep time</string>
     <string name="ingredients">Ingredients</string>
     <string name="instruccion">Instruccion</string>
+    <string name="menu_favorite">menu_favorite</string>
 
 </resources>

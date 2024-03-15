@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.recipesapp.Adapter.RecipesAdapter
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
 
 
+
     }
 
     private fun initRecyledView() {
@@ -59,14 +61,21 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val intent = Intent(this, RecipesActivity::class.java)
         intent.putExtra("RECIPES_ID", recipes.id)
 
+        //val detailRecipe = Intent (this,DetailActivity::class.java)
+        //detailRecipe.putExtra("RECIPES_ID",recipes.id)
+
 
 
 
         startActivity(intent)
+       // startActivity(detailRecipe)
 
 
 
     }
+
+
+
 
 
 
@@ -186,6 +195,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
 
 

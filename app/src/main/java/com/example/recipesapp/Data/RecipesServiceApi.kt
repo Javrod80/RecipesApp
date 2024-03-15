@@ -22,6 +22,11 @@ interface RecipesServiceApi {
 
 
 
+    @GET("recipes/{id}")
+    suspend fun detailId (@Path("id") identifier : Int) : Response <Recipes>
+
+
+
 
 }
 
