@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicación Recetas</string>
+    <string name="recipes_search">Buscador recetas</string>
+    <string name="recipe_search">Buscador receta</string>
+    <string name="recipe_name">Nombre receta</string>
+    <string name="type_cuisine">Tipo cocina</string>
+    <string name="meal_type">Tipo comida</string>
+    <string name="difficulty">Dificultad</string>
+    <string name="cook_time">Tiempo cocinado</string>
+    <string name="prep_time">Tiempo preparación</string>
+    <string name="ingredients">ingredientes</string>
+    <string name="instruction">instrucciones</string>
+    <string name="menu_favorite">menu favorito</string>
+    <string name="close_application">cerrar aplicación</string>
+    <string name="are_you_sure">Estas seguro</string>
+    <string name="go_out">salir</string>
+    <string name="no">no</string>
+    <string name="shared">compartir</string>
+</resources>

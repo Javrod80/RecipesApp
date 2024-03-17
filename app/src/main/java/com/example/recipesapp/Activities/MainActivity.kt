@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.recipesapp.Adapter.RecipesAdapter
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
+import com.example.recipesapp.R
 import com.example.recipesapp.databinding.ActivityMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -187,14 +189,34 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean { //barra
+
         when (item.itemId) {
-            android.R.id.home -> {
-                finish()
+
+            android.R.id.home -> {showExitDialog()
+               // finish()
                 return true
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
+
+//MaterialAlertDialogBuilder
+
+    private fun showExitDialog() {
+        val builder: MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(this,
+            R.style.AlertDialogTheme
+        )
+            //.setIcon(R.drawable.arrow_back)
+            .setTitle(R.string.close_application)
+            .setMessage(R.string.are_you_sure)
+            .setPositiveButton(R.string.go_out) { _, _ -> finish() }
+            .setNegativeButton(R.string.no) { dialog, _ -> dialog?.cancel() }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
 
 
 

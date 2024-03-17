@@ -1,14 +1,14 @@
-package com.example.recipesapp
+package com.example.recipesapp.Activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
+import com.example.recipesapp.R
 import com.example.recipesapp.databinding.ActivityRecipesBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -47,7 +47,7 @@ class RecipesActivity : AppCompatActivity() {
 
         detailRecipes(recipeId!!)
 
-        showExitDialog()
+
 
 
 
@@ -61,7 +61,7 @@ class RecipesActivity : AppCompatActivity() {
 
     private fun loadData() {
         Picasso.get().load(recipes.image).into(binding.imageRec)
-        binding.ingredients.text = recipes.ingredients.toString()
+        binding.ingredients.text = "Ingredientes :  ${recipes.ingredients.toString()}"
         binding.cuisine.text = recipes.cuisine
         binding.cookTime.text = recipes.cookTime.toString()
         binding.prepTime.text = recipes.prepTimes.toString()
@@ -76,6 +76,14 @@ class RecipesActivity : AppCompatActivity() {
 
 
     }
+
+
+
+
+
+
+
+
 
     // LLamada a detalles de  las recetas by Id
     private fun detailRecipes(id : Int) {
@@ -132,7 +140,7 @@ class RecipesActivity : AppCompatActivity() {
         R.id.compartir -> {
             val sendIntent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "COMPARTIR")
+                putExtra(Intent.EXTRA_TEXT, R.string.shared)
                 type = "text/plain"
             }
             val shareIntent = Intent.createChooser(sendIntent, null)
@@ -171,18 +179,6 @@ class RecipesActivity : AppCompatActivity() {
 
     }
 
-    private fun showExitDialog() {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder
-            .setIcon(R.drawable.arrow_back)
-            .setTitle("Cerrar aplicación")
-            .setMessage("Esta seguro de que quiere salir de la aplicación?")
-            .setPositiveButton("Salir") { _, _ -> finish() }
-            .setNegativeButton("No") { dialog, _ -> dialog?.cancel() }
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
 
 
 

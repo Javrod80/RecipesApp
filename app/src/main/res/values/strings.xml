@@ -1,15 +1,22 @@
 <resources>
-    <string name="app_name">RecipesApp</string>
-    <string name="recipes_search">Buscador de Recetas</string>
-    <string name="recipe_search">Buscador de Recetas</string>
-    <string name="recipe_name">Nombre receta</string>
-    <string name="type_cuisine">Cuisine</string>
-    <string name="meal_type">Meal Type</string>
-    <string name="difficulty">Difficulty</string>
-    <string name="cook_time">Cook Time</string>
-    <string name="prep_time">Prep time</string>
-    <string name="ingredients">Ingredients</string>
-    <string name="instruccion">Instruccion</string>
-    <string name="menu_favorite">menu_favorite</string>
+    <string name="app_name" >RecipesApp</string>
+    <string name="recipes_search" >Search recipes</string>
+    <string name="recipe_search">Search recipe</string>
+    <string name="recipe_name" >Recipe Name</string>
+    <string name="type_cuisine" >Cuisine</string>
+    <string name="meal_type" >Meal Type</string>
+    <string name="difficulty" >Difficulty</string>
+    <string name="cook_time" >Cook Time</string>
+    <string name="prep_time" >Prep time</string>
+    <string name="ingredients" >Ingredients</string>
+    <string name="instruction" >Instruction</string>
+    <string name="menu_favorite" >Favorite</string>
+    <string name="close_application" >Close application</string>
+    <string name="are_you_sure" >Are you sure</string>
+    <string name="go_out">Go out</string>
+    <string name="no">No</string>
+    <string name="shared" > Shared</string>
+
 
 </resources>
+
