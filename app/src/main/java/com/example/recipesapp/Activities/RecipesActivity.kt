@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
 import com.example.recipesapp.R
@@ -61,14 +62,14 @@ class RecipesActivity : AppCompatActivity() {
 
     private fun loadData() {
         Picasso.get().load(recipes.image).into(binding.imageRec)
-        binding.ingredients.text = "Ingredientes :  ${recipes.ingredients.toString()}"
-        binding.cuisine.text = recipes.cuisine
-        binding.cookTime.text = recipes.cookTime.toString()
-        binding.prepTime.text = recipes.prepTimes.toString()
-        binding.difficulty.text = recipes.difficulty
-        binding.mealType.text = recipes.mealType.toString()
-        binding.instruccion.text = recipes.instructions.toString()
-        binding.recipeName.text = recipes.name
+        binding.ingredients.text = "INGREDIENTS :  ${recipes.ingredients.toString()}"
+        binding.cuisine.text = "CUISINE : ${recipes.cuisine}"
+        binding.cookTime.text = "COOK TIME : ${recipes.cookTime.toString()}"
+        binding.prepTime.text = "PREP TIME : ${recipes.prepTimes.toString()}"
+        binding.difficulty.text ="DIFFICULTY : ${recipes.difficulty}"
+        binding.mealType.text ="MEALTIME : ${recipes.mealType.toString()}"
+        binding.instruccion.text = "INSTRUCTION : ${recipes.instructions.toString()}"
+        binding.recipeName.text =  recipes.name
 
         isFavorite = recipes.id.toString() == session.favoriteRecipe
 

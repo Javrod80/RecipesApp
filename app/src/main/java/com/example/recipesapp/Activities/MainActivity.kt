@@ -9,7 +9,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.Adapter.RecipesAdapter
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             onItemClickListener(it)
         }
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun onItemClickListener(position: Int) {
@@ -128,9 +128,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            Log.i("HTTP", "Antes de la llamada")
+           // Log.i("HTTP", "Antes de la llamada")
             val response = call.allRecipes()
-            Log.i("HTTP", "Despues de la llamada")
+           // Log.i("HTTP", "Despues de la llamada")
             Log.i("HTTP", response.body().toString())
 
             runOnUiThread {

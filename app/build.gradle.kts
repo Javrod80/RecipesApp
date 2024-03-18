@@ -58,4 +58,8 @@ dependencies {
 
 
     implementation ("com.google.android.material:material:1.11.0")
+
+    val sqliteversion = "2.4.0"
+    implementation("androidx.sqlite:sqlite-ktx:$sqliteversion")
+
 }

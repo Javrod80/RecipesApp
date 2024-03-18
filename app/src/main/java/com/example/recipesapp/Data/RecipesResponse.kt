@@ -7,7 +7,7 @@ class RecipesResponse(
     @SerializedName("recipes") val recipes: List<Recipes>,
 
 
-) {
+    ) {
 
 }
 class Recipes(
