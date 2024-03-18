@@ -76,14 +76,14 @@ class RecipesActivity : AppCompatActivity() {
         var ingredientsText = ""
         recipes.ingredients.forEachIndexed { index, element ->
             if (index > 0) ingredientsText += "\n"
-            ingredientsText += " $element"
+            ingredientsText += " - $element -"
         }
         binding.ingredients.text =  ingredientsText
 
         var instructionText = ""
         recipes.instructions.forEachIndexed { index, element ->
             if (index > 0) instructionText += "\n"
-            instructionText += " $element"
+            instructionText += "  $element "
         }
         binding.instruction.text =  instructionText
 

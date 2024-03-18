@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RecipesActivity">
+
+
+    <ImageView
+        android:id="@+id/imageRec"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="220dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:id="@+id/recipeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_horizontal"
+                    android:text="Recipe Name:"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+
+
+                <TextView
+                    android:id="@+id/cuisine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/type_cuisine"/>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/mealType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/meal_type"/>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+
+                <TextView
+                    android:id="@+id/difficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/difficulty"/>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/cookTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/cook_time"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/prepTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/teal_700"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/prep_time"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+
+
+                <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textStyle="normal"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/ingredients"
+                    />
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/instruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/purple_700"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/instruction"/>
+
+
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
