@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recipesapp.Adapter.DataRecipesAdapter
 import com.example.recipesapp.Adapter.RecipesAdapter
+import com.example.recipesapp.Data.DataRecipes
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
 import com.example.recipesapp.R
@@ -27,6 +29,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding : ActivityMainBinding
     private lateinit var adapter: RecipesAdapter
     private var recipesList : List <Recipes> = listOf()
+
+
+
+    private lateinit var dataAdapter : DataRecipesAdapter
+    private var datarecipesList : List <DataRecipes> = listOf()
 
 
 
@@ -55,6 +62,12 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+       /* dataAdapter = DataRecipesAdapter(datarecipesList){
+            onItemClickListener(it)
+        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = dataAdapter */
     }
 
     private fun onItemClickListener(position: Int) {
@@ -138,6 +151,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     Log.i("HTTP", "Respuesta correcta")
                     recipesList = response.body()?.recipes.orEmpty()
                     adapter.updateItems(recipesList)
+
+                   // datarecipesList = response.body()?..orEmpty()
+                    //dataAdapter.updateDataRecipes(datarecipesList)
+
 
 
 

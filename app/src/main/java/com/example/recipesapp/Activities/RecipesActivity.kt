@@ -62,14 +62,38 @@ class RecipesActivity : AppCompatActivity() {
 
     private fun loadData() {
         Picasso.get().load(recipes.image).into(binding.imageRec)
-        binding.ingredients.text = "INGREDIENTS :  ${recipes.ingredients.toString()}"
+        //binding.ingredients.text = "INGREDIENTS :  ${recipes.ingredients.toString()}"
         binding.cuisine.text = "CUISINE : ${recipes.cuisine}"
         binding.cookTime.text = "COOK TIME : ${recipes.cookTime.toString()}"
         binding.prepTime.text = "PREP TIME : ${recipes.prepTimes.toString()}"
         binding.difficulty.text ="DIFFICULTY : ${recipes.difficulty}"
         binding.mealType.text ="MEALTIME : ${recipes.mealType.toString()}"
-        binding.instruccion.text = "INSTRUCTION : ${recipes.instructions.toString()}"
+        //binding.instrution.text = "INSTRUCTION : ${recipes.instructions.toString()}"
         binding.recipeName.text =  recipes.name
+
+
+
+        var ingredientsText = ""
+        recipes.ingredients.forEachIndexed { index, element ->
+            if (index > 0) ingredientsText += "\n"
+            ingredientsText += " $element"
+        }
+        binding.ingredients.text =  ingredientsText
+
+        var instructionText = ""
+        recipes.instructions.forEachIndexed { index, element ->
+            if (index > 0) instructionText += "\n"
+            instructionText += " $element"
+        }
+        binding.instruction.text =  instructionText
+
+
+
+
+
+
+
+
 
         isFavorite = recipes.id.toString() == session.favoriteRecipe
 

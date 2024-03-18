@@ -18,6 +18,7 @@ class RecipeDAO (context: Context) {
 
         var values = ContentValues()
         values.put(DataRecipes.COLUMN_NAME_RECIPES, dataRecipes.recipe)
+        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.recipe)
 
 
         var newRowId = db.insert(DataRecipes.TABLE_NAME, null, values)
@@ -36,6 +37,7 @@ class RecipeDAO (context: Context) {
         var values = ContentValues()
 
         values.put(DataRecipes.COLUMN_NAME_RECIPES, dataRecipes.recipe)
+        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.recipe)
 
         var updatedRows = db.update(
             DataRecipes.TABLE_NAME,
@@ -84,11 +86,12 @@ class RecipeDAO (context: Context) {
 
         if (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
-            val taskName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
+            val recipeName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
+            val image = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_IMAGE))
 
 
 
-            dataRecipes = DataRecipes(id, taskName)
+            dataRecipes = DataRecipes(id, recipeName,image)
 
 
         }
@@ -117,10 +120,11 @@ class RecipeDAO (context: Context) {
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
-            val taskName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
+            val recipeName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
+            val image = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_IMAGE))
 
 
-            val dataRecipes: DataRecipes = DataRecipes(id, taskName)
+            val dataRecipes: DataRecipes = DataRecipes(id, recipeName,image)
 
             list.add(dataRecipes)
 

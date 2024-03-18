@@ -18,7 +18,8 @@ class DatabaseManager(context: Context) : SQLiteOpenHelper (context,DATABASE_NAM
         private const val SQL_CREATE_TABLE_RECIPES =
             "CREATE TABLE ${DataRecipes.TABLE_NAME} (" +
                     "$COLUMN_NAME_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "${DataRecipes.COLUMN_NAME_RECIPES} TEXT)"
+                    "${DataRecipes.COLUMN_NAME_RECIPES} TEXT ," +
+                    "${DataRecipes.COLUMN_NAME_IMAGE} TEXT ) "
 
 
                     private const

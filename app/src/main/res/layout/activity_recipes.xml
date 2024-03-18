@@ -150,7 +150,7 @@
                 android:layout_height="1dp"
                 app:dividerColor="@android:color/darker_gray"/>
             <TextView
-                android:id="@+id/instruccion"
+                android:id="@+id/instruction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
