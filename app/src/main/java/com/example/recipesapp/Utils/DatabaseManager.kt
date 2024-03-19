@@ -19,7 +19,14 @@ class DatabaseManager(context: Context) : SQLiteOpenHelper (context,DATABASE_NAM
             "CREATE TABLE ${DataRecipes.TABLE_NAME} (" +
                     "$COLUMN_NAME_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "${DataRecipes.COLUMN_NAME_RECIPES} TEXT ," +
-                    "${DataRecipes.COLUMN_NAME_IMAGE} TEXT ) "
+                    "${DataRecipes.COLUMN_NAME_IMAGE} TEXT ," +
+                    "${DataRecipes.COLUMN_NAME_INGREDIENTS} TEXT ," +
+                    "${DataRecipes.COLUMN_NAME_INSTRUCTIONS} TEXT," +
+                    "${DataRecipes.COLUMN_NAME_PREP_TIME} INTEGER ," +
+                    "${DataRecipes.COLUMN_NAME_COOK_TIME} INTEGER ," +
+                    "${DataRecipes.COLUMN_NAME_DIFFICULTY} TEXT ," +
+                    "${DataRecipes.COLUMN_NAME_CUISINE} TEXT ," +
+                    "${DataRecipes.COLUMN_NAME_MEAL_TYPE} TEXT )"
 
 
                     private const

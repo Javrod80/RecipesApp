@@ -18,7 +18,14 @@ class RecipeDAO (context: Context) {
 
         var values = ContentValues()
         values.put(DataRecipes.COLUMN_NAME_RECIPES, dataRecipes.recipe)
-        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.recipe)
+        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.image)
+        values.put(DataRecipes.COLUMN_NAME_MEAL_TYPE,dataRecipes.mealType)
+        values.put(DataRecipes.COLUMN_NAME_CUISINE,dataRecipes.cuisine)
+        values.put(DataRecipes.COLUMN_NAME_COOK_TIME,dataRecipes.cookTime)
+        values.put(DataRecipes.COLUMN_NAME_DIFFICULTY,dataRecipes.difficulty)
+        values.put(DataRecipes.COLUMN_NAME_INGREDIENTS,dataRecipes.ingredients.joinToString (","))
+        values.put(DataRecipes.COLUMN_NAME_INSTRUCTIONS,dataRecipes.instruction.joinToString (","))
+        values.put(DataRecipes.COLUMN_NAME_PREP_TIME,dataRecipes.prepTime)
 
 
         var newRowId = db.insert(DataRecipes.TABLE_NAME, null, values)
@@ -37,7 +44,14 @@ class RecipeDAO (context: Context) {
         var values = ContentValues()
 
         values.put(DataRecipes.COLUMN_NAME_RECIPES, dataRecipes.recipe)
-        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.recipe)
+        values.put(DataRecipes.COLUMN_NAME_IMAGE,dataRecipes.image)
+        values.put(DataRecipes.COLUMN_NAME_MEAL_TYPE,dataRecipes.mealType)
+        values.put(DataRecipes.COLUMN_NAME_CUISINE,dataRecipes.cuisine)
+        values.put(DataRecipes.COLUMN_NAME_COOK_TIME,dataRecipes.cookTime)
+        values.put(DataRecipes.COLUMN_NAME_DIFFICULTY,dataRecipes.difficulty)
+        values.put(DataRecipes.COLUMN_NAME_INGREDIENTS,dataRecipes.ingredients.joinToString (","))
+        values.put(DataRecipes.COLUMN_NAME_INSTRUCTIONS,dataRecipes.instruction.joinToString (","))
+        values.put(DataRecipes.COLUMN_NAME_PREP_TIME,dataRecipes.prepTime)
 
         var updatedRows = db.update(
             DataRecipes.TABLE_NAME,
@@ -88,10 +102,18 @@ class RecipeDAO (context: Context) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
             val recipeName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
             val image = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_IMAGE))
+            val mealType : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_MEAL_TYPE))
+            val cuisine : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_CUISINE))
+            val timeCook : Int = cursor.getInt(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_COOK_TIME))
+            val prepTime : Int = cursor.getInt(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_PREP_TIME))
+            val difficulty : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_DIFFICULTY))
+            val ingredients : List<String> = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_INGREDIENTS)).split(",")
+            val instruction : List<String> = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_INSTRUCTIONS)).split(",")
 
 
 
-            dataRecipes = DataRecipes(id, recipeName,image)
+
+            dataRecipes = DataRecipes(id, recipeName,image,ingredients, instruction,prepTime,timeCook,difficulty,cuisine,mealType)
 
 
         }
@@ -122,10 +144,15 @@ class RecipeDAO (context: Context) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
             val recipeName = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_RECIPES))
             val image = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_IMAGE))
+            val mealType : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_MEAL_TYPE))
+            val cuisine : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_CUISINE))
+            val timeCook : Int = cursor.getInt(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_COOK_TIME))
+            val prepTime : Int = cursor.getInt(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_PREP_TIME))
+            val difficulty : String = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_DIFFICULTY))
+            val ingredients : List<String> = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_INGREDIENTS)).split(",")
+            val instruction : List<String> = cursor.getString(cursor.getColumnIndex(DataRecipes.COLUMN_NAME_INSTRUCTIONS)).split(",")
 
-
-            val dataRecipes: DataRecipes = DataRecipes(id, recipeName,image)
-
+            val dataRecipes: DataRecipes = DataRecipes(id, recipeName,image,ingredients, instruction,prepTime,timeCook,difficulty,cuisine,mealType)
             list.add(dataRecipes)
 
         }

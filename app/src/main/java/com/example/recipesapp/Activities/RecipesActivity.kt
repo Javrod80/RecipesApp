@@ -63,12 +63,12 @@ class RecipesActivity : AppCompatActivity() {
     private fun loadData() {
         Picasso.get().load(recipes.image).into(binding.imageRec)
         //binding.ingredients.text = "INGREDIENTS :  ${recipes.ingredients.toString()}"
-        binding.cuisine.text = "CUISINE : ${recipes.cuisine}"
-        binding.cookTime.text = "COOK TIME : ${recipes.cookTime.toString()}"
-        binding.prepTime.text = "PREP TIME : ${recipes.prepTimes.toString()}"
-        binding.difficulty.text ="DIFFICULTY : ${recipes.difficulty}"
-        binding.mealType.text ="MEALTIME : ${recipes.mealType.toString()}"
-        //binding.instrution.text = "INSTRUCTION : ${recipes.instructions.toString()}"
+        binding.cuisine.text = "Cuisine : ${recipes.cuisine}"
+        binding.cookTime.text = "Cook Time : ${recipes.cookTime.toString()}"
+        binding.prepTime.text = "Prep Time : ${recipes.prepTimes.toString()}"
+        binding.difficulty.text ="Difficulty : ${recipes.difficulty}"
+        //binding.mealType.text ="MEAL TIME : ${recipes.mealType.toString()}"
+        //binding.instruction.text = "INSTRUCTION : ${recipes.instructions.toString()}"
         binding.recipeName.text =  recipes.name
 
 
@@ -86,6 +86,13 @@ class RecipesActivity : AppCompatActivity() {
             instructionText += "  $element "
         }
         binding.instruction.text =  instructionText
+
+        var mealTypeText = "Meal Type : "
+        recipes.mealType.forEachIndexed { index, element ->
+            if (index > 0) mealTypeText  += " - "
+            mealTypeText += " $element "
+        }
+        binding.mealType.text = mealTypeText
 
 
 

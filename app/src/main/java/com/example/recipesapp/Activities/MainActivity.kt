@@ -15,6 +15,7 @@ import com.example.recipesapp.Adapter.RecipesAdapter
 import com.example.recipesapp.Data.DataRecipes
 import com.example.recipesapp.Data.Recipes
 import com.example.recipesapp.Data.RecipesServiceApi
+import com.example.recipesapp.Provider.RecipeDAO
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -26,15 +27,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: RecipesAdapter
-    private var recipesList : List <Recipes> = listOf()
+    private var recipesList: List<Recipes> = listOf()
 
 
-
-    private lateinit var dataAdapter : DataRecipesAdapter
-    private var datarecipesList : List <DataRecipes> = listOf()
-
+     private lateinit var dataAdapter: DataRecipesAdapter
+     private var dataRecipeList : List<DataRecipes> = listOf()
+    private lateinit var recipeDAO : RecipeDAO
 
 
 
@@ -49,52 +49,75 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         binding.searchView.setOnQueryTextListener(this)
 
+
+        recipeDAO = RecipeDAO(this)
+
         initRecyledView()
 
-
+         // initRecycleData()
 
 
     }
 
     private fun initRecyledView() {
-        adapter = RecipesAdapter(recipesList){
+        adapter = RecipesAdapter(recipesList) {
             onItemClickListener(it)
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-       /* dataAdapter = DataRecipesAdapter(datarecipesList){
-            onItemClickListener(it)
-        }
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = dataAdapter */
+
     }
 
     private fun onItemClickListener(position: Int) {
-        val recipes : Recipes = recipesList[position]
+        val recipes: Recipes = recipesList[position]
 
         val intent = Intent(this, RecipesActivity::class.java)
         intent.putExtra("RECIPES_ID", recipes.id)
-
-        //val detailRecipe = Intent (this,DetailActivity::class.java)
-        //detailRecipe.putExtra("RECIPES_ID",recipes.id)
 
 
 
 
         startActivity(intent)
-       // startActivity(detailRecipe)
 
 
 
     }
 
 
+//RecycleView de la tabla
+
+
+  /*   private fun initRecycleData (){
+
+         dataRecipeList = recipeDAO.findAll()
+
+         dataAdapter = DataRecipesAdapter(dataRecipeList){
+             onItemDataListener(it)
+         }
+         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+         binding.recyclerView.adapter = dataAdapter
+
+     }
+
+
+     private fun onItemDataListener (position: Int){
+         val dataRecipes : DataRecipes = dataRecipeList[position]
+         val intent = Intent (this,RecipesActivity::class.java)
+         intent.putExtra("RECIPES_ID",dataRecipes.id)
+
+          startActivity(intent)
+
+     }*/
 
 
 
+    //Buscar recetas
 
-    /*private fun searchRecipes (query: String) {
+
+    private fun searchRecipes (query: String) {
+
+
 
 
         val retrofit = Retrofit.Builder()
@@ -109,11 +132,22 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         CoroutineScope(Dispatchers.IO).launch {
             val response = call.searchByName(query)
 
+
             runOnUiThread {
                 if (response.body() != null) {
                     Log.i("HTTP", "Respuesta correcta")
-                    recipesList = response.body()?.recipes.orEmpty()
-                    adapter.updateItems(recipesList)
+
+                   recipesList = response.body()?.recipes.orEmpty()
+                   adapter.updateItems(recipesList)
+
+
+                   /* dataRecipeList = response.body()?.datarecipes.orEmpty()
+
+
+                    dataAdapter.updateDataRecipes(dataRecipeList)*/
+
+
+
 
 
 
@@ -126,11 +160,23 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 hideKeyboard()
             }
         }
-    }*/
+    }
+    //LLamada buscar recetas
+
+     override fun onQueryTextSubmit(query: String?): Boolean {
+         if (!query.isNullOrEmpty()) {
+             searchRecipes(query)
+         }
+         return true
+     }
+     override fun onQueryTextChange(p0: String?): Boolean {
+         return true
+     }
+
 
     // LLamada a todas las recetas
 
-    private fun seeRecipes(query: String) {
+   /* private fun seeRecipes(query: String) {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://dummyjson.com/")
@@ -141,21 +187,20 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-           // Log.i("HTTP", "Antes de la llamada")
+            // Log.i("HTTP", "Antes de la llamada")
             val response = call.allRecipes()
-           // Log.i("HTTP", "Despues de la llamada")
+            // Log.i("HTTP", "Despues de la llamada")
             Log.i("HTTP", response.body().toString())
 
             runOnUiThread {
                 if (response.body() != null) {
                     Log.i("HTTP", "Respuesta correcta")
+
                     recipesList = response.body()?.recipes.orEmpty()
                     adapter.updateItems(recipesList)
 
-                   // datarecipesList = response.body()?..orEmpty()
-                    //dataAdapter.updateDataRecipes(datarecipesList)
-
-
+                    // dataRecipesList = response.body()?.recipes.orEmpty()
+                    // dataAdapter.updateDataRecipes(dataRecipesList)
 
 
                 } else {
@@ -169,9 +214,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
 
     }
-    private fun showError() {
-        Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
-    }
+
 
     // Llamada a todas las recetas
 
@@ -181,22 +224,14 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
         return true
     }
-    override fun onQueryTextChange(p0: String?): Boolean {
-        return true
-    }
 
-    //LLamada buscar recetas
-
-   /* override fun onQueryTextSubmit(query: String?): Boolean {
-        if (!query.isNullOrEmpty()) {
-            searchRecipes(query)
-        }
-        return true
-    }
     override fun onQueryTextChange(p0: String?): Boolean {
         return true
     }*/
 
+    private fun showError() {
+        Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
+    }
 
 
     private fun hideKeyboard() {
@@ -209,8 +244,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         when (item.itemId) {
 
-            android.R.id.home -> {showExitDialog()
-               // finish()
+            android.R.id.home -> {
+                showExitDialog()
+                // finish()
                 return true
             }
         }
@@ -221,7 +257,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 //MaterialAlertDialogBuilder
 
     private fun showExitDialog() {
-        val builder: MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(this,
+        val builder: MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(
+            this,
             R.style.AlertDialogTheme
         )
             //.setIcon(R.drawable.arrow_back)
@@ -233,18 +270,6 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
