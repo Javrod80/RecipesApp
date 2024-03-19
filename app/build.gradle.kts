@@ -51,15 +51,15 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
-    implementation ("com.squareup.picasso:picasso:2.71828")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation (libs.picasso)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.kotlinx.coroutines.android)
 
 
-    implementation ("com.google.android.material:material:1.11.0")
+    implementation (libs.material.v1110)
 
-    val sqliteversion = "2.4.0"
-    implementation("androidx.sqlite:sqlite-ktx:$sqliteversion")
+    //val sqliteversion = "2.4.0"
+    implementation(libs.androidx.sqlite.ktx)
 
 }

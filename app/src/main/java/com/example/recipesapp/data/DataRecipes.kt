@@ -1,6 +1,6 @@
-package com.example.recipesapp.Data
+package com.example.recipesapp.data
 
-import com.example.recipesapp.Utils.DatabaseManager
+import com.example.recipesapp.utils.DatabaseManager
 
 class DataRecipes(
     var id: Int,

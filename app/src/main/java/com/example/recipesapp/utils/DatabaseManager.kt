@@ -1,9 +1,9 @@
-package com.example.recipesapp.Utils
+package com.example.recipesapp.utils
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.recipesapp.Data.DataRecipes
+import com.example.recipesapp.data.DataRecipes
 
 class DatabaseManager(context: Context) : SQLiteOpenHelper (context,DATABASE_NAME,null,DATABASE_VERSION) {
 

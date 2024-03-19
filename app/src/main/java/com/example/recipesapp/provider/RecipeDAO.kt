@@ -1,11 +1,11 @@
-package com.example.recipesapp.Provider
+package com.example.recipesapp.provider
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
-import com.example.recipesapp.Data.DataRecipes
-import com.example.recipesapp.Utils.DatabaseManager
+import com.example.recipesapp.data.DataRecipes
+import com.example.recipesapp.utils.DatabaseManager
 
 class RecipeDAO (context: Context) {
 

@@ -1,9 +1,9 @@
-package com.example.recipesapp.Adapter
+package com.example.recipesapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipesapp.Data.Recipes
+import com.example.recipesapp.data.Recipes
 import com.example.recipesapp.databinding.ItemRecipesBinding
 import com.squareup.picasso.Picasso
 

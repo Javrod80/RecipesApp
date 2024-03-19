@@ -1,4 +1,4 @@
-package com.example.recipesapp.Activities
+package com.example.recipesapp.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 
-import com.example.recipesapp.Data.Recipes
-import com.example.recipesapp.Data.RecipesServiceApi
+import com.example.recipesapp.data.Recipes
+import com.example.recipesapp.data.RecipesServiceApi
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.ActivityRecipesBinding
 import com.squareup.picasso.Picasso

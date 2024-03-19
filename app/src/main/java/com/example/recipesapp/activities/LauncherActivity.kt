@@ -1,9 +1,10 @@
-package com.example.recipesapp.Activities
+package com.example.recipesapp.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.recipesapp.databinding.ActivityLauncherBinding
+
 
 class LauncherActivity : AppCompatActivity() {
 

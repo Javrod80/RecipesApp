@@ -1,4 +1,4 @@
-package com.example.recipesapp.Data
+package com.example.recipesapp.data
 
 import retrofit2.Response
 import retrofit2.http.GET
@@ -20,7 +20,7 @@ interface RecipesServiceApi {
     suspend fun searchByName (@Query("q") query: String) : Response <RecipesResponse>
 
 
-
+//Prueba de llamada para utilizar con la base de datos
     @GET("recipes/{id}")
     suspend fun detailId (@Path("id") identifier : Int) : Response <Recipes>
 

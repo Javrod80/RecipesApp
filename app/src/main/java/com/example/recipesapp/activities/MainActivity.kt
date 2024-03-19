@@ -1,4 +1,4 @@
-package com.example.recipesapp.Activities
+package com.example.recipesapp.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,14 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recipesapp.Adapter.DataRecipesAdapter
-import com.example.recipesapp.Adapter.RecipesAdapter
-import com.example.recipesapp.Data.DataRecipes
-import com.example.recipesapp.Data.Recipes
-import com.example.recipesapp.Data.RecipesServiceApi
-import com.example.recipesapp.Provider.RecipeDAO
+import com.example.recipesapp.adapter.DataRecipesAdapter
+import com.example.recipesapp.adapter.RecipesAdapter
+import com.example.recipesapp.data.DataRecipes
+import com.example.recipesapp.data.Recipes
+import com.example.recipesapp.data.RecipesServiceApi
+import com.example.recipesapp.provider.RecipeDAO
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.ActivityMainBinding
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
