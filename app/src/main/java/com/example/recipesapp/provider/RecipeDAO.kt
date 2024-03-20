@@ -79,6 +79,15 @@ class RecipeDAO (context: Context) {
 
     }
 
+    fun deleteAll() {
+        val db = databaseManager.writableDatabase
+
+        val deletedRows = db.delete(DataRecipes.TABLE_NAME, null, null)
+        Log.i("DATABASE", "Deleted rows: $deletedRows")
+
+        db.close()
+    }
+
 
     @SuppressLint("Range")
     fun find(id: Int): DataRecipes? {

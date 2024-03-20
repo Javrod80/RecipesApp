@@ -9,7 +9,7 @@ Requisitos:
 
 4- Selección de receta favorita, botón favorito en barra app. (RecipesActivity y SessionPreference).
 
-5- Pendiente de finalizar
+5- No estaba en el objetivo inicial por eso la desarrollo cuando ya tenía los otros puntos hechos.
 
 6- Uso de Retrofit para realizar la llamada a la API Rest en las 2 actividades. Realizo varias llamadas para probar diferentes tipos de descargas (RecipesServiceApi).
 
