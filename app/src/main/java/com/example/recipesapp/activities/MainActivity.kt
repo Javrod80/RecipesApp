@@ -53,14 +53,17 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         recipeDAO = RecipeDAO(this)
 
-        initRecyledView()
+       // initRecyledView()
 
-         // initRecycleData()
+          initRecycleData()
 
 
     }
 
-    private fun initRecyledView() {
+
+    //
+
+   /* private fun initRecyledView() {
         adapter = RecipesAdapter(recipesList) {
             onItemClickListener(it)
         }
@@ -76,20 +79,15 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val intent = Intent(this, RecipesActivity::class.java)
         intent.putExtra("RECIPES_ID", recipes.id)
 
-
-
-
         startActivity(intent)
 
-
-
-    }
+    }*/
 
 
 //RecycleView de la tabla
 
 
-  /*   private fun initRecycleData (){
+     private fun initRecycleData (){
 
          dataRecipeList = recipeDAO.findAll()
 
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
           startActivity(intent)
 
-     }*/
+     }
 
 
 
@@ -138,14 +136,23 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 if (response.body() != null) {
                     Log.i("HTTP", "Respuesta correcta")
 
-                   recipesList = response.body()?.recipes.orEmpty()
-                   adapter.updateItems(recipesList)
+                   //recipesList = response.body()?.recipes.orEmpty()
+                   //adapter.updateItems(recipesList)
 
 
-                   /* dataRecipeList = response.body()?.datarecipes.orEmpty()
+                    // Transform from Recipes to DataRecipes
 
 
-                    dataAdapter.updateDataRecipes(dataRecipeList)*/
+                    var transformList = mutableListOf<DataRecipes>()
+
+                    for (recipe in response.body()?.recipes.orEmpty()) {
+                        val dataRecipes = DataRecipes(recipe.id, recipe.name, recipe.image, recipe.ingredients, recipe.instructions, recipe.prepTimes, recipe.cookTime, recipe.difficulty, recipe.cuisine, recipe.mealType.joinToString { it })
+                        transformList.add(dataRecipes)
+                    }
+
+
+                    dataRecipeList = transformList.toList()
+                    dataAdapter.updateDataRecipes(dataRecipeList)
 
 
 
@@ -263,10 +270,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             R.style.AlertDialogTheme
         )
             //.setIcon(R.drawable.arrow_back)
-            .setTitle(R.string.close_application)
-            .setMessage(R.string.are_you_sure)
-            .setPositiveButton(R.string.go_out) { _, _ -> finish() }
-            .setNegativeButton(R.string.no) { dialog, _ -> dialog?.cancel() }
+            .setTitle(resources.getString(R.string.close_application))
+            .setMessage(resources.getString(R.string.are_you_sure))
+            .setPositiveButton(resources.getString(R.string.go_out)) { _, _ -> finish() }
+            .setNegativeButton(resources.getString(R.string.no)) { dialog, _ -> dialog?.cancel() }
 
         val dialog: AlertDialog = builder.create()
         dialog.show()

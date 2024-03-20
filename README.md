@@ -22,4 +22,4 @@ Requisitos:
 
 10- Lo utilizo en las actividades.
 
-11- Cambio el estilo de Dialogo según investigo en la web de MaterialDesign ( <style name="AlertDialogTheme">)
+11- Cambio el estilo del Dialogo  ( <style name="AlertDialogTheme">)

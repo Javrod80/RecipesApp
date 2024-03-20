@@ -11,18 +11,20 @@ interface RecipesServiceApi {
 
     @GET("recipes/{id}")
     suspend fun recipesId (@Path("id") identifier: Int) : Response<Recipes>
+    //'https://dummyjson.com/recipes/1'
 
     @GET("recipes")
     suspend fun allRecipes () : Response<RecipesResponse>
+    //('https://dummyjson.com/recipes')
 
 
     @GET ("recipes/search")
     suspend fun searchByName (@Query("q") query: String) : Response <RecipesResponse>
 
+    //'https://dummyjson.com/recipes/search?q=Margherita')
 
-//Prueba de llamada para utilizar con la base de datos
-    @GET("recipes/{id}")
-    suspend fun detailId (@Path("id") identifier : Int) : Response <Recipes>
+
+
 
 
 
@@ -30,4 +32,3 @@ interface RecipesServiceApi {
 }
 
 
-//@Query("q") query: String)

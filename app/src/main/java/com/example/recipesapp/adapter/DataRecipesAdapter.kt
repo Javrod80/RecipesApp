@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipesapp.data.DataRecipes
+import com.example.recipesapp.data.Recipes
 import com.example.recipesapp.databinding.ItemRecipesBinding
 import com.squareup.picasso.Picasso
 
